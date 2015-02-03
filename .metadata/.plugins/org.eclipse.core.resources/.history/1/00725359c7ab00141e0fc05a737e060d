@@ -1,25 +1,20 @@
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 
 public class Frame extends JFrame implements ActionListener {
-	JPanel toolbar = new JPanel();
+	JPanel toolbar;
 	ScreenPanel screen;
 
 	public Frame() {
-		this.setPreferredSize(new Dimension(500, 500));
-		FlowLayout bar = new FlowLayout();
-		toolbar.setLayout(bar);
+		this.setPreferredSize(new Dimension(1000, 1000));
 		toolbar.add(new JButton("Start"));
 		toolbar.add(new JButton("Change Direction"));
-		toolbar.add(new JSlider(JSlider.HORIZONTAL));
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		this.add(toolbar);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);

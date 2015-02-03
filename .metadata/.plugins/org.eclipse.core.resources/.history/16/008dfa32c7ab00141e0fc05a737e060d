@@ -1,0 +1,29 @@
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+
+public class Frame extends JFrame{
+		JPanel toolbar;
+		ScreenPanel screen;
+		
+		public Frame(){
+			this.setPreferredSize(new Dimension(1000,1000));
+			toolbar.add(new JButton("Start"));
+			toolbar.add(new JButton("Change Direction"));
+			toolbar.setComponentOrientation(
+	                ComponentOrientation.LEFT_TO_RIGHT);
+			this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+			this.setVisible(true);
+			this.pack();
+		}
+		
+		public static void main(String [] args){
+			new Frame();
+		}
+		
+
+}
