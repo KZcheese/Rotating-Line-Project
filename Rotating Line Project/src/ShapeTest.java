@@ -4,16 +4,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class ShapeTest extends JFrame implements ActionListener {
 	ScreenPanel panel = new ScreenPanel(2);
-	JButton paint = new JButton("repaint");
+	JPanel Toolbar = new JPanel();
+	JButton play = new JButton("play");
+	Timer timer = new Timer(1000 / 60, this);
 
 	public ShapeTest() {
 		this.setPreferredSize(new Dimension(600, 600));
-		paint.setActionCommand("repaint");
-		this.add(paint);
+		timer.setActionCommand("playing");
+		play.setActionCommand("play");
+		panel.add(play);
 		this.add(panel);
 		this.setVisible(true);
 		this.pack();
@@ -27,8 +32,12 @@ public class ShapeTest extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		String command = arg0.getActionCommand();
-		if (command.equals("repaint")) {
-			paint.repaint();
+		System.out.println("painting");
+		if (command.equals("play")) {
+			timer.start();
+		} else if (command.equals("playing")) {
+			panel.rotate(5);
+			panel.repaint();
 		}
 
 	}
