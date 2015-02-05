@@ -1,15 +1,13 @@
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ShapeTest extends JFrame implements ActionListener {
-	JPanel panel = new ScreenPanel();
+	ScreenPanel panel = new ScreenPanel(2);
 	JButton paint = new JButton("repaint");
 
 	public ShapeTest() {
@@ -17,6 +15,7 @@ public class ShapeTest extends JFrame implements ActionListener {
 		paint.setActionCommand("repaint");
 		this.add(paint);
 		this.add(panel);
+		this.setVisible(true);
 		this.pack();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -28,15 +27,9 @@ public class ShapeTest extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		String command = arg0.getActionCommand();
-		if(command.equals("repaint")){
+		if (command.equals("repaint")) {
 			paint.repaint();
 		}
-		
-	}private class ScreenPanel extends JPanel {
-		public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			g.drawLine(0, 0, 100, 100);
-		}
+
 	}
 }
-
