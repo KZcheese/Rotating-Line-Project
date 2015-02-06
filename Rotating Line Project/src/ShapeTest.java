@@ -9,16 +9,22 @@ import javax.swing.Timer;
 
 @SuppressWarnings("serial")
 public class ShapeTest extends JFrame implements ActionListener {
-	ScreenPanel panel = new ScreenPanel(2);
+	ScreenPanel panel = new ScreenPanel();
 	JPanel Toolbar = new JPanel();
 	JButton play = new JButton("play");
-	Timer timer = new Timer(1000 / 60, this);
+	JButton stop = new JButton("stop");
+	Timer timer = new Timer(1000 / 120, this);
 
 	public ShapeTest() {
 		this.setPreferredSize(new Dimension(600, 600));
 		timer.setActionCommand("playing");
+		play.addActionListener(this);
 		play.setActionCommand("play");
+		stop.addActionListener(this);
+		stop.setActionCommand("stop");
 		panel.add(play);
+		panel.add(stop);
+		panel.setStroke(10);
 		this.add(panel);
 		this.setVisible(true);
 		this.pack();
@@ -31,13 +37,15 @@ public class ShapeTest extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		String command = arg0.getActionCommand();
 		System.out.println("painting");
+		String command = arg0.getActionCommand();
 		if (command.equals("play")) {
 			timer.start();
 		} else if (command.equals("playing")) {
-			panel.rotate(5);
+			panel.rotate(0.5);
 			panel.repaint();
+		} else if (command.equals("stop")) {
+			timer.stop();
 		}
 
 	}
