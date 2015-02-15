@@ -1,25 +1,3 @@
-<<<<<<< HEAD
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-/**
- * 
- * @author Kevin Zhan
- *
- */
-
-public class Frame extends JFrame implements ActionListener{
-		JPanel toolbar;
-		ScreenPanel screen;
-		@Override
-		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-=======
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -58,6 +36,4 @@ public class Frame extends JFrame implements ActionListener {
 		// TODO Auto-generated method stub
 		
 	}
-
->>>>>>> origin/master
 }
