@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import java.awt.Component;
+=======
+>>>>>>> origin/master
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -146,5 +149,9 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		
 
 	}
+<<<<<<< HEAD
 
 }
+=======
+}
+>>>>>>> origin/master
