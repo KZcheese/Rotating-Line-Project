@@ -24,18 +24,18 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 	private JButton changeDirec = new JButton("Change Direction");
 	private FlowLayout bar = new FlowLayout();
 	private final int speed_min = 0;
-	private final int speed_initial = 8;
-	private final int speed_max = 10;
+	private final int speed_max = 5;
+	private int speed = 2;
 	private JSlider speeds = new JSlider(JSlider.HORIZONTAL, speed_min,
-			speed_max, speed_initial);
+			speed_max, speed);
 	private JLabel speedLabel = new JLabel("Speed", JLabel.CENTER);
-	private double speed;
 	private final int width_min = 0;
-	private final int width_initial = 2;
+	private int stroke = 2;
 	private final int width_max = 10;
 	private JSlider width = new JSlider(JSlider.HORIZONTAL, width_min,
-			width_max, width_initial);
+			width_max, stroke);
 	private JLabel widthLabel = new JLabel("Width", JLabel.CENTER);
+	private boolean clockwise = true;
 
 	public Frame() {
 		this.setPreferredSize(new Dimension(800, 500));
@@ -59,8 +59,8 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		this.toolbar.add(speedLabel);
 
 		speeds.addChangeListener(this);
-		speeds.setMinorTickSpacing(1);
-		speeds.setMajorTickSpacing(2);
+//		speeds.setMinorTickSpacing(1);
+		speeds.setMajorTickSpacing(1);
 		speeds.setPaintTicks(true);
 		speeds.setPaintLabels(true);
 		this.toolbar.add(speeds);
@@ -113,23 +113,17 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 
 		} else if (action.equals("Play")) {
 			// do the thing that actually plays
-			screen.rotate(1);
+			if (clockwise)
+				screen.rotate(speed);
+			else
+				screen.rotate(-1 * speed);
 			screen.repaint();
+		} else if (action.equals("changeDirec")) {
+			if (clockwise)
+				clockwise = false;
+			else
+				clockwise = true;
 		}
-		// if(action.equals("changeDirec")){
-		// if(isPlaying){
-		// timer.start();
-		// isPlaying=true;
-		// } else{
-		// timer.stop();
-		// isPlaying=false;
-		// }
-		// }
-		// else if(action.equals("Playing")){
-		// screen.rotate(6);
-		// screen.repaint();
-		// }
-
 	}
 
 	@Override

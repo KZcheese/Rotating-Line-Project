@@ -16,6 +16,7 @@ public class ScreenPanel extends JPanel {
 
 	public ScreenPanel() {
 		this.setVisible(true);
+		stroke = 0;
 	}
 
 	public void rotate(double angle) {
