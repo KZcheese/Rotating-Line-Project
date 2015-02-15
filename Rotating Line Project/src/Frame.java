@@ -59,7 +59,7 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		this.toolbar.add(speedLabel);
 
 		speeds.addChangeListener(this);
-//		speeds.setMinorTickSpacing(1);
+		// speeds.setMinorTickSpacing(1);
 		speeds.setMajorTickSpacing(1);
 		speeds.setPaintTicks(true);
 		speeds.setPaintLabels(true);

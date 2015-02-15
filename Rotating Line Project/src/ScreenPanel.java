@@ -8,19 +8,32 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ScreenPanel extends JPanel {
-	private int radius = 0;
+	private int radius;
 	private double angle = 0;
-	private int sides;
 	private int stroke;
-	private Polygon p;
+	private int sides;
+	private int[] xPoints;
+	private int[] yPoints;
+	private boolean coversPanel = false;
+
+	public ScreenPanel(int sides, int radius, int stroke) {
+		this.stroke = stroke;
+		this.sides = sides;
+	}
+
+	public ScreenPanel(int stroke) {
+		this(2, 1, stroke);
+		coversPanel = true;
+	}
 
 	public ScreenPanel() {
-		this.setVisible(true);
-		stroke = 0;
+		this(0);
 	}
 
 	public void rotate(double angle) {
 		this.angle += angle;
+		if (angle > 360)
+			angle -= 360;
 	}
 
 	public void paintComponent(Graphics g) {
@@ -29,14 +42,22 @@ public class ScreenPanel extends JPanel {
 		Dimension size = this.getSize();
 		double x = size.getWidth();
 		double y = size.getHeight();
-		radius = (int) Math.round(x + y);
+		if (coversPanel)
+			radius = (int) Math.round(x + y);
+		g2d.setStroke(new BasicStroke(stroke));
 		int centerX = (int) Math.round(x / 2);
 		int centerY = (int) Math.round(y / 2);
-		int xCoord = (int) (radius * Math.cos(angle * Math.PI / 180));
-		int yCoord = (int) (radius * Math.sin(angle * Math.PI / 180));
-		g2d.setStroke(new BasicStroke(stroke));
-		g2d.drawLine(centerX - xCoord, centerY - yCoord, centerX + xCoord,
-				centerY + yCoord);
+		int[] xCoords = new int[sides];
+		int[] yCoords = new int[sides];
+		for (int i = 0; i < sides; i++) {
+			xCoords[i] = (int) (radius * Math.cos((angle + 360 / sides * i)
+					* Math.PI / 180))
+					+ centerX;
+			yCoords[i] = (int) (radius * Math.sin((angle + 360 / sides * i)
+					* Math.PI / 180))
+					+ centerY;
+		}
+		g2d.drawPolygon(new Polygon(xCoords, yCoords, sides));
 		g2d.setStroke(new BasicStroke(0));
 	}
 
@@ -52,6 +73,10 @@ public class ScreenPanel extends JPanel {
 		return radius;
 	}
 
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
 	public double getAngle() {
 		return angle;
 	}
@@ -60,7 +85,8 @@ public class ScreenPanel extends JPanel {
 		return sides;
 	}
 
-	public Polygon getP() {
-		return p;
+	public void setSides(int sides) {
+		this.sides = sides;
 	}
+
 }
