@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 import java.awt.Component;
-=======
->>>>>>> origin/master
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -29,43 +26,38 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 	private final int speed_min = 0;
 	private final int speed_initial = 8;
 	private final int speed_max = 10;
-	private JSlider speeds = new JSlider(JSlider.HORIZONTAL, speed_min, speed_max,
-			speed_initial);
+	private JSlider speeds = new JSlider(JSlider.HORIZONTAL, speed_min,
+			speed_max, speed_initial);
 	private JLabel speedLabel = new JLabel("Speed", JLabel.CENTER);
 	private double speed;
 	private final int width_min = 0;
 	private final int width_initial = 2;
 	private final int width_max = 10;
-	private JSlider width = new JSlider(JSlider.HORIZONTAL, width_min, width_max,
-			width_initial);
+	private JSlider width = new JSlider(JSlider.HORIZONTAL, width_min,
+			width_max, width_initial);
 	private JLabel widthLabel = new JLabel("Width", JLabel.CENTER);
 
-	
 	public Frame() {
 		this.setPreferredSize(new Dimension(800, 500));
 		this.setMinimumSize(new Dimension(750, 300));
-		
+
 		toolbar.setLayout(bar);
 		timer.setActionCommand("Play");
 		startstop.setActionCommand("startstop");
 		startstop.addActionListener(this);
 		this.toolbar.add(startstop);
 
-		//change direction
+		// change direction
 		timer.setActionCommand("Play");
 		changeDirec.setActionCommand("changeDirec");
 		changeDirec.addActionListener(this);
 		this.toolbar.add(changeDirec);
-		
-		
-
-		
 
 		// mph
 		speedLabel.setAlignmentX(Component.TOP_ALIGNMENT);
 		// change speed double using speed variable
 		this.toolbar.add(speedLabel);
-		
+
 		speeds.addChangeListener(this);
 		speeds.setMinorTickSpacing(1);
 		speeds.setMajorTickSpacing(2);
@@ -74,8 +66,7 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		this.toolbar.add(speeds);
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
-		
-		//setStroke
+		// setStroke
 		this.toolbar.add(widthLabel);
 		width.addChangeListener(this);
 		width.setMinorTickSpacing(1);
@@ -86,16 +77,14 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		width.setPaintLabels(true);
 		this.toolbar.add(width);
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		
-		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT,toolbar,screen);
+
+		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, toolbar,
+				screen);
 		split.setDividerSize(0);
 		this.add(split);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
-		
-		
 		this.pack();
-		
 	}
 
 	public static void main(String[] args) {
@@ -108,50 +97,43 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		if (action.equals("startstop")) {
 			if (!isPlaying) {
 				// start timer and stuff
-			//	if(action.equals("changeDirec")){
-			//		screen.rotate(-1);
-			//	}
+				// if(action.equals("changeDirec")){
+				// screen.rotate(-1);
+				// }
 				timer.start();
 				startstop.setText("Stop ");
 				isPlaying = true;
-				
+
 			} else {
 				// stop timer and stuff
 				timer.stop();
 				startstop.setText("Start");
 				isPlaying = false;
 			}
-			
-		
-		}else if (action.equals("Play")){
-//			do the thing that actually plays
+
+		} else if (action.equals("Play")) {
+			// do the thing that actually plays
 			screen.rotate(1);
 			screen.repaint();
 		}
-	//	if(action.equals("changeDirec")){
-	//		if(isPlaying){
-	//			timer.start();	
-	//			isPlaying=true;
-	//		} else{
-	//			timer.stop();
-	//			isPlaying=false;
-	//		}
-	//	}
-	//	else if(action.equals("Playing")){
-	//		screen.rotate(6);
-	//		screen.repaint();
-	//	}
+		// if(action.equals("changeDirec")){
+		// if(isPlaying){
+		// timer.start();
+		// isPlaying=true;
+		// } else{
+		// timer.stop();
+		// isPlaying=false;
+		// }
+		// }
+		// else if(action.equals("Playing")){
+		// screen.rotate(6);
+		// screen.repaint();
+		// }
 
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent arg0) {
-		
 
 	}
-<<<<<<< HEAD
-
 }
-=======
-}
->>>>>>> origin/master
