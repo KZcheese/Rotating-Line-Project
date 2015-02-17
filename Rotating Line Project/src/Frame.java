@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
@@ -40,6 +41,7 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 	public Frame() {
 		this.setPreferredSize(new Dimension(800, 500));
 		this.setMinimumSize(new Dimension(750, 300));
+		screen.setColor(new Color(255,0,0));
 
 		toolbar.setLayout(bar);
 		timer.setActionCommand("Play");

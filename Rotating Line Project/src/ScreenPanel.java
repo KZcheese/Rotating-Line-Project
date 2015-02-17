@@ -1,4 +1,5 @@
 import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -9,25 +10,20 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ScreenPanel extends JPanel {
 	private int radius;
-	private double angle = 0;
+	private double angle;
 	private int stroke;
 	private int sides;
-	private int[] xPoints;
-	private int[] yPoints;
-	private boolean coversPanel = false;
+	private Color color;
 
-	public ScreenPanel(int sides, int radius, int stroke) {
+	public ScreenPanel(int sides, int radius, int stroke, Color color) {
+		this.radius = radius;
 		this.stroke = stroke;
 		this.sides = sides;
-	}
-
-	public ScreenPanel(int stroke) {
-		this(2, 1, stroke);
-		coversPanel = true;
+		this.color = color;
 	}
 
 	public ScreenPanel() {
-		this(0);
+		this(2, 100, 0, new Color(0, 0, 0));
 	}
 
 	public void rotate(double angle) {
@@ -42,18 +38,21 @@ public class ScreenPanel extends JPanel {
 		Dimension size = this.getSize();
 		double x = size.getWidth();
 		double y = size.getHeight();
-		if (coversPanel)
-			radius = (int) Math.round(x + y);
 		g2d.setStroke(new BasicStroke(stroke));
+		g2d.setColor(color);
 		int centerX = (int) Math.round(x / 2);
 		int centerY = (int) Math.round(y / 2);
 		int[] xCoords = new int[sides];
 		int[] yCoords = new int[sides];
+		int rTemp = radius;
+		System.out.println(sides);
+		if (sides == 2)
+			rTemp = (centerX + centerY);
 		for (int i = 0; i < sides; i++) {
-			xCoords[i] = (int) (radius * Math.cos((angle + 360 / sides * i)
+			xCoords[i] = (int) (rTemp * Math.cos((angle + (360 / sides) * i)
 					* Math.PI / 180))
 					+ centerX;
-			yCoords[i] = (int) (radius * Math.sin((angle + 360 / sides * i)
+			yCoords[i] = (int) (rTemp * Math.sin((angle + (360 / sides) * i)
 					* Math.PI / 180))
 					+ centerY;
 		}
@@ -75,10 +74,16 @@ public class ScreenPanel extends JPanel {
 
 	public void setRadius(int radius) {
 		this.radius = radius;
+		repaint();
 	}
 
 	public double getAngle() {
 		return angle;
+	}
+
+	public void setAngle(double angle) {
+		this.angle = angle;
+		repaint();
 	}
 
 	public int getSides() {
@@ -87,6 +92,16 @@ public class ScreenPanel extends JPanel {
 
 	public void setSides(int sides) {
 		this.sides = sides;
+		repaint();
+	}
+
+	public Color getColor() {
+		return color;
+	}
+
+	public void setColor(Color c) {
+		this.color = c;
+		repaint();
 	}
 
 }
