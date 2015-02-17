@@ -15,15 +15,17 @@ public class ScreenPanel extends JPanel {
 	private int sides;
 	private Color color;
 
-	public ScreenPanel(int sides, int radius, int stroke, Color color) {
+	public ScreenPanel(int sides, int radius, int stroke, double angle,
+			Color color) {
 		this.radius = radius;
 		this.stroke = stroke;
+		this.angle = angle;
 		this.sides = sides;
 		this.color = color;
 	}
 
 	public ScreenPanel() {
-		this(2, 100, 0, new Color(0, 0, 0));
+		this(2, 100, 0, 0, new Color(0, 0, 0));
 	}
 
 	public void rotate(double angle) {
