@@ -45,7 +45,6 @@ public class ScreenPanel extends JPanel {
 		int[] xCoords = new int[sides];
 		int[] yCoords = new int[sides];
 		int rTemp = radius;
-		System.out.println(sides);
 		if (sides == 2)
 			rTemp = (centerX + centerY);
 		for (int i = 0; i < sides; i++) {
