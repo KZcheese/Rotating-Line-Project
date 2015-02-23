@@ -133,8 +133,6 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent arg0) {
-<<<<<<< HEAD
-=======
 		JSlider slid = (JSlider) arg0.getSource();
 		if (slid.equals(speeds)) {
 			speed = slid.getValue();
@@ -151,8 +149,6 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 			screen.setRadius(radius);
 			screen.repaint();
 		}
-		
->>>>>>> origin/master
 		
 	}
 }
