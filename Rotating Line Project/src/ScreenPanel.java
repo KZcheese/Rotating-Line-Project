@@ -4,9 +4,13 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+
 import javax.swing.JPanel;
-/** 
- * A class that displays a regular polygon that can rotate with modifiable line width, side number, radius, and color.
+
+/**
+ * A class that displays a regular polygon that can rotate with modifiable line
+ * width, side number, radius, and color.
+ * 
  * @author Kevin Zhan
  * @author Umanga Balasuriya
  * @version Last updated 2/23/15
@@ -38,10 +42,12 @@ public class ScreenPanel extends JPanel {
 	public ScreenPanel() {
 		this(2, 100, 0, 0, new Color(0, 0, 0));
 	}
-/**
- * Rotates the polygon by the given degrees.
- * @param angle
- */
+
+	/**
+	 * Rotates the polygon by the given degrees.
+	 * 
+	 * @param angle
+	 */
 	public void rotate(double angle) {
 		this.angle += angle;
 		if (angle > 360)

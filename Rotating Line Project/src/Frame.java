@@ -17,6 +17,11 @@ import javax.swing.Timer;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+/**
+ * 
+ * @author Kevin Zhan
+ * @author Umanga Balasuriya
+ */
 public class Frame extends JFrame implements ActionListener, ChangeListener {
 	private JPanel toolbar = new JPanel();
 	private ScreenPanel screen = new ScreenPanel();
@@ -41,13 +46,12 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 	int sides = 2;
 	private JLabel sideLabel = new JLabel("Sides", JLabel.CENTER);
 	private JSlider sideSlider = new JSlider(JSlider.HORIZONTAL, 2, 10, sides);
-	
 	private JButton chooseColor = new JButton("Choose Color");
-	
 	private int radius = 100;
-	private JSlider radiusSlider = new JSlider(JSlider.HORIZONTAL, 0, 500, radius);
+	private JSlider radiusSlider = new JSlider(JSlider.HORIZONTAL, 0, 500,
+			radius);
 	private JLabel radiusLabel = new JLabel("Radius", JLabel.CENTER);
-	
+
 	public Frame() {
 		this.setPreferredSize(new Dimension(1500, 1000));
 		this.setMinimumSize(new Dimension(1400, 300));
@@ -70,7 +74,6 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		this.toolbar.add(speeds);
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
-		
 		this.toolbar.add(widthLabel);
 		width.addChangeListener(this);
 		width.setMinorTickSpacing(1);
@@ -79,7 +82,7 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		width.setPaintLabels(true);
 		this.toolbar.add(width);
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		
+
 		this.toolbar.add(radiusLabel);
 		radiusSlider.addChangeListener(this);
 		radiusSlider.setMinorTickSpacing(25);
@@ -88,11 +91,11 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		radiusSlider.setPaintLabels(true);
 		this.toolbar.add(radiusSlider);
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		
+
 		chooseColor.setActionCommand("chooseColor");
 		chooseColor.addActionListener(this);
 		this.toolbar.add(chooseColor);
-		
+
 		this.toolbar.add(sideLabel);
 		sideSlider.addChangeListener(this);
 		sideSlider.setMinorTickSpacing(1);
@@ -123,13 +126,11 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 				timer.start();
 				startstop.setText("Stop ");
 				isPlaying = true;
-
 			} else {
 				timer.stop();
 				startstop.setText("Start");
 				isPlaying = false;
 			}
-
 		} else if (action.equals("Play")) {
 			if (clockwise)
 				screen.rotate(speed);
@@ -141,11 +142,11 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 				clockwise = false;
 			else
 				clockwise = true;
-		}
-		else if(action.equals("chooseColor")){
-			Color c = JColorChooser.showDialog(null, "Choose a Color", screen.getColor());
-	      	if (c != null)
-	      		screen.setColor(c);
+		} else if (action.equals("chooseColor")) {
+			Color c = JColorChooser.showDialog(null, "Choose a Color",
+					screen.getColor());
+			if (c != null)
+				screen.setColor(c);
 		}
 	}
 
@@ -162,16 +163,14 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 			stroke = slid.getValue();
 			screen.setStroke(stroke);
 			screen.repaint();
-		}else if (slid.equals(radiusSlider)) {
+		} else if (slid.equals(radiusSlider)) {
 			radius = slid.getValue();
 			screen.setRadius(radius);
 			screen.repaint();
-		}else if(slid.equals(sideSlider)){
+		} else if (slid.equals(sideSlider)) {
 			sides = slid.getValue();
 			screen.setSides(sides);
 			screen.repaint();
 		}
-		
-
 	}
 }
