@@ -46,7 +46,7 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 	
 	public Frame() {
 		this.setPreferredSize(new Dimension(1210, 500));
-		this.setMinimumSize(new Dimension(1210, 300));
+		this.setMinimumSize(new Dimension(1100, 300));
 		screen.setSides(3);
 		toolbar.setLayout(bar);
 		timer.setActionCommand("Play");
