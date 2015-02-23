@@ -48,7 +48,8 @@ public class ScreenPanel extends JPanel {
 		int[] yCoords = new int[sides];
 		int rTemp = radius;
 		if (sides == 2)
-			rTemp = (centerX + centerY);
+			rTemp = (int) Math.round(Math.sqrt((centerX * centerX + centerY
+					* centerY)));
 		for (int i = 0; i < sides; i++) {
 			xCoords[i] = (int) (rTemp * Math.cos((angle + (360 / sides) * i)
 					* Math.PI / 180))

@@ -128,6 +128,6 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent arg0) {
-
+		
 	}
 }
