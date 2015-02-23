@@ -78,15 +78,14 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		
 		this.toolbar.add(radiusLabel);
 		radiusSlider.addChangeListener(this);
-		radiusSlider.setMinorTickSpacing(25);
+		radiusSlider.setMinorTickSpacing(10);
 		radiusSlider.setMajorTickSpacing(100);
 		radiusSlider.setPaintTicks(true);
 		radiusSlider.setPaintLabels(true);
 		this.toolbar.add(radiusSlider);
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		
-		//color
-		//sides line = 2
+		
 
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, toolbar,
 				screen);

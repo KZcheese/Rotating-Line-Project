@@ -37,7 +37,7 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 	private JLabel widthLabel = new JLabel("Width", JLabel.CENTER);
 	private boolean clockwise = true;
 	private int radius = 100;
-	private JSlider radiusSlider = new JSlider(JSlider.HORIZONTAL, 0, 500, radius);
+	private JSlider radiusSlider = new JSlider(JSlider.HORIZONTAL, 0, 1000, radius);
 	private JLabel radiusLabel = new JLabel("Radius", JLabel.CENTER);
 	
 	public Frame() {
@@ -70,6 +70,8 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		this.toolbar.add(widthLabel);
 		width.addChangeListener(this);
 		width.setMinorTickSpacing(1);
+		width.setMajorTickSpacing(0);
+		width.setMajorTickSpacing(10);
 		width.setMajorTickSpacing(2);
 		width.setPaintTicks(true);
 		width.setPaintLabels(true);
@@ -78,15 +80,16 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		
 		this.toolbar.add(radiusLabel);
 		radiusSlider.addChangeListener(this);
-		radiusSlider.setMinorTickSpacing(25);
-		radiusSlider.setMajorTickSpacing(100);
+		radiusSlider.setMinorTickSpacing(1);
+		radiusSlider.setMajorTickSpacing(0);
+		radiusSlider.setMajorTickSpacing(10);
+		radiusSlider.setMajorTickSpacing(2);
 		radiusSlider.setPaintTicks(true);
 		radiusSlider.setPaintLabels(true);
 		this.toolbar.add(radiusSlider);
 		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		
-		//color
-		//sides line = 2
+		
 
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, toolbar,
 				screen);
