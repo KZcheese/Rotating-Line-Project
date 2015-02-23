@@ -162,6 +162,8 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 			screen.repaint();
 		}
 		
+<<<<<<< HEAD
 		
+>>>>>>> fc176c5e9e779f9594f17d0059aee8e845e8b197
 	}
 }
