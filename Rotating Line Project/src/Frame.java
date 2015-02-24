@@ -24,6 +24,7 @@ import javax.swing.event.ChangeListener;
  */
 public class Frame extends JFrame implements ActionListener, ChangeListener {
 	private JPanel toolbar = new JPanel();
+	private JPanel toolbar2 = new JPanel();
 	private ScreenPanel screen = new ScreenPanel();
 	private boolean isPlaying = false;
 	private Timer timer = new Timer(8, this);
@@ -53,8 +54,8 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 	private JLabel radiusLabel = new JLabel("Radius", JLabel.CENTER);
 
 	public Frame() {
-		this.setPreferredSize(new Dimension(1500, 1000));
-		this.setMinimumSize(new Dimension(1400, 300));
+		this.setPreferredSize(new Dimension(800, 600));
+		this.setMinimumSize(new Dimension(800, 300));
 		toolbar.setLayout(bar);
 		timer.setActionCommand("Play");
 		startstop.setActionCommand("startstop");
@@ -81,34 +82,35 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 		width.setPaintTicks(true);
 		width.setPaintLabels(true);
 		this.toolbar.add(width);
-		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
-		this.toolbar.add(radiusLabel);
+		this.toolbar2.add(radiusLabel);
 		radiusSlider.addChangeListener(this);
 		radiusSlider.setMinorTickSpacing(25);
 		radiusSlider.setMajorTickSpacing(100);
 		radiusSlider.setPaintTicks(true);
 		radiusSlider.setPaintLabels(true);
-		this.toolbar.add(radiusSlider);
-		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		this.toolbar2.add(radiusSlider);
+		toolbar2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 
 		chooseColor.setActionCommand("chooseColor");
 		chooseColor.addActionListener(this);
-		this.toolbar.add(chooseColor);
+		this.toolbar2.add(chooseColor);
 
-		this.toolbar.add(sideLabel);
+		this.toolbar2.add(sideLabel);
 		sideSlider.addChangeListener(this);
 		sideSlider.setMinorTickSpacing(1);
 		sideSlider.setMajorTickSpacing(2);
 		sideSlider.setPaintTicks(true);
 		sideSlider.setPaintLabels(true);
-		this.toolbar.add(sideSlider);
-		toolbar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+		this.toolbar2.add(sideSlider);
 
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT, toolbar,
+				toolbar2);
+		JSplitPane split2 = new JSplitPane(JSplitPane.VERTICAL_SPLIT, split,
 				screen);
 		split.setDividerSize(0);
-		this.add(split);
+		split2.setDividerSize(0);
+		this.add(split2);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 		this.pack();
