@@ -21,7 +21,9 @@ import javax.swing.event.ChangeListener;
  * 
  * @author Kevin Zhan
  * @author Umanga Balasuriya
+ * @version Last updated 2/28/15
  */
+@SuppressWarnings("serial")
 public class Frame extends JFrame implements ActionListener, ChangeListener {
 	private JPanel toolbar = new JPanel();
 	private JPanel toolbar2 = new JPanel();

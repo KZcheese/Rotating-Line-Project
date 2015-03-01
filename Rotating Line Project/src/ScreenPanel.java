@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  * 
  * @author Kevin Zhan
  * @author Umanga Balasuriya
- * @version Last updated 2/23/15
+ * @version Last updated 2/28/15
  */
 @SuppressWarnings("serial")
 public class ScreenPanel extends JPanel {
@@ -24,6 +24,9 @@ public class ScreenPanel extends JPanel {
 	private Color color;
 
 	/**
+	 * Angle is stored in degrees. Radius and stroke are both stored as number
+	 * of pixels.
+	 * 
 	 * @param sides
 	 * @param radius
 	 * @param stroke
@@ -39,12 +42,17 @@ public class ScreenPanel extends JPanel {
 		this.color = color;
 	}
 
+	/**
+	 * Creates a ScreenPanel with default attributes of 2 sides, 100px radius,
+	 * 0px stroke, 0°, and a color of (0, 0, 0) black.
+	 */
 	public ScreenPanel() {
 		this(2, 100, 0, 0, new Color(0, 0, 0));
 	}
 
 	/**
-	 * Rotates the polygon by the given degrees.
+	 * Rotates the polygon by the given number degrees. If the angle is greater
+	 * than 360° the equivalent value between 0° and 360° will be used instead.
 	 * 
 	 * @param angle
 	 */
@@ -54,6 +62,11 @@ public class ScreenPanel extends JPanel {
 			angle -= 360;
 	}
 
+	/**
+	 * Paints the line as a polygon object using polar coordinates. If the shape
+	 * has 2 sides, the radius value will be ignored and a line will be drawn
+	 * across the entire window instead.
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
@@ -82,12 +95,16 @@ public class ScreenPanel extends JPanel {
 		g2d.setStroke(new BasicStroke(0));
 	}
 
+	/*
+	 * All setters automatically repaint the shape.
+	 */
 	public int getStroke() {
 		return stroke;
 	}
 
 	public void setStroke(int stroke) {
 		this.stroke = stroke;
+		repaint();
 	}
 
 	public int getRadius() {
