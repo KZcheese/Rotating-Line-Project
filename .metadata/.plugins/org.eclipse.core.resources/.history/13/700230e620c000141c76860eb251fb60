@@ -226,20 +226,16 @@ public class Frame extends JFrame implements ActionListener, ChangeListener {
 				timer.start();
 		} //this state changes if the width slider is used
 		else if (slid.equals(width)) {
-			//the stroke(width) is set to the value given by the user on the slider and repaints at that width
 			stroke = slid.getValue();
 			screen.setStroke(stroke);
 			screen.repaint();
 		} //this state changes if the radius slider is used
 		else if (slid.equals(radiusSlider)) {
-			// the radius is set to the value given by the user on the slider and repaints at that radius
-			//radius only works for sides greater than 2
 			radius = slid.getValue();
 			screen.setRadius(radius);
 			screen.repaint();
 		}  //this state changes if the side slider is used
 		else if (slid.equals(sideSlider)) {
-			//the side is set to the value given by the user on the slider and repaints at that side value
 			sides = slid.getValue();
 			screen.setSides(sides);
 			screen.repaint();
